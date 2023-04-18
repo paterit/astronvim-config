@@ -22,28 +22,26 @@ return {
   {
     "jay-babu/mason-null-ls.nvim",
     opts = {
-      ensure_installed = { "prettierd", "stylua", "ruff", "rustfmt", "shfmt", "black", "isort" },
+      ensure_installed = { "prettierd", "stylua", "ruff", "rustfmt", "shfmt", "black" },
     },
     keys = {
       {
         "<leader>lPr",
         function()
           local null_ls = require("null-ls")
-          null_ls.disable({ name = "isort" })
-          null_ls.disable({ name = "black" })
           null_ls.enable({ name = "ruff" })
+          null_ls.disable({ name = "isort" })
         end,
-        desc = "Enable ruff",
+        desc = "Ruff on, isort off",
       },
       {
-        "<leader>lPb",
+        "<leader>lPi",
         function()
           local null_ls = require("null-ls")
           null_ls.disable({ name = "ruff" })
-          null_ls.enable({ name = "black" })
           null_ls.enable({ name = "isort" })
         end,
-        desc = "Enable black and isort",
+        desc = "Ruff off, isort on",
       },
     },
   },
