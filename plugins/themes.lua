@@ -1,9 +1,8 @@
 return {
   {
     "navarasu/onedark.nvim",
-    priority = 1000, -- Ensure it loads first
     opts = { style = "warmer" },
-    -- lazy = false,
+    lazy = false,
   },
   {
     "sainnhe/gruvbox-material",
