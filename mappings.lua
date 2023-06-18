@@ -1,6 +1,5 @@
 return {
   n = {
-    ["<leader>h"] = false,
     ["<leader>bn"] = { "<cmd>tabnew<cr>", desc = "New tab" },
     ["<leader>bD"] = {
       function()
@@ -14,7 +13,8 @@ return {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
       desc = "Replace all in file",
     },
-    ["<leader>lP"] = { name = "Python" },
+    ["<leader>lp"] = { name = " Python" },
+    ["<leader>h"] = { name = "", desc = "󰛢 Harpoon" },
   },
   t = {
     -- setting a mapping to false will disable it

@@ -42,6 +42,8 @@ return {
         "eslint",
         "tsserver",
         "cssls",
+        "jsonls",
+        "docker_compose_language_service",
       },
       timeout_ms = 1000, -- default format timeout
       -- filter = function(client) -- fully override the default formatting function
@@ -72,8 +74,30 @@ return {
           },
         },
       },
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              diagnosticMode = "openFilesOnly",
+            },
+          },
+        },
+      },
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            checkOnSave = {
+              command = "clippy",
+            },
+          },
+        },
+      },
+    },
+    setup_handlers = {
+      rust_analyzer = function(_, opts) require("rust-tools").setup({ server = opts }) end, -- setup rust-tools
     },
   },
+
   -- Configure require("lazy").setup() options
   lazy = {
     defaults = { lazy = true },
