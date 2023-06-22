@@ -1,3 +1,14 @@
+local function profile_switcher(to_enable, to_disable)
+  local null_ls = require("null-ls")
+  for _, name in ipairs(to_enable) do
+    null_ls.enable({ name = name })
+  end
+
+  for _, name in ipairs(to_disable) do
+    null_ls.disable({ name = name })
+  end
+end
+
 return {
   {
     "williamboman/mason-lspconfig.nvim",
@@ -16,32 +27,30 @@ return {
         "cssls",
         "tailwindcss",
         "yamlls",
+        "prismals",
+        "taplo",
+        "dockerls",
+        "docker_compose_language_service",
       },
     },
   },
   {
     "jay-babu/mason-null-ls.nvim",
     opts = {
-      ensure_installed = { "prettierd", "stylua", "ruff", "rustfmt", "shfmt", "black" },
-    },
-    keys = {
-      {
-        "<leader>lPr",
-        function()
-          local null_ls = require("null-ls")
-          null_ls.enable({ name = "ruff" })
-          null_ls.disable({ name = "isort" })
-        end,
-        desc = "Ruff on, isort off",
-      },
-      {
-        "<leader>lPi",
-        function()
-          local null_ls = require("null-ls")
-          null_ls.disable({ name = "ruff" })
-          null_ls.enable({ name = "isort" })
-        end,
-        desc = "Ruff off, isort on",
+      ensure_installed = {
+        -- JavaScript + other
+        "prettierd",
+        --Lua
+        "stylua",
+        -- Rust
+        "rustfmt",
+        -- Bash
+        "shfmt",
+        -- Python
+        "ruff",
+        "black",
+        -- SQL
+        "sqlfluff",
       },
     },
   },
